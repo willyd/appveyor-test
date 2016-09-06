@@ -19,6 +19,7 @@ def download_files(url, start=0, stop=10, directory='downloads'):
     page = requests.get(url).text
     soup = BeautifulSoup(page, 'html.parser')
     nodes = soup.find_all('a')
+    stop = min(stop, len(nodes))
     for node in nodes[start:stop]:
         href = node.get('href')
         if '..' not in href:
