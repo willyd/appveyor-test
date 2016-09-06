@@ -2,8 +2,8 @@ version: 1.0.{build}
 environment:
   matrix:
     - URL: http://repo.msys2.org/msys/x86_64/
-      START: 400
-      STOP: 500
+      START: 500
+      STOP: 600
 
 build_script:
 - cmd: >-
