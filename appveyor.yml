@@ -1,0 +1,21 @@
+version: 1.0.{build}
+environment:
+  matrix:
+    - URL: http://repo.msys2.org/msys/x86_64/
+      START: 0
+      STOP: 10
+
+build_script:
+- cmd: >-
+    set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;C:\Miniconda-x64\Library\bin;%PATH%
+
+    conda update conda -y
+
+    conda install requests click pywget beautifulsoup4 -y
+
+    python downloader.py --url %URL% --start %START% --stop %STOP%
+
+artifacts:
+
+  # pushing a single file
+  - path: downloads.tar.bz2
